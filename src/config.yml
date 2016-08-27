@@ -1,0 +1,4 @@
+# Should the plugin perform active portal monitoring or not? If 'true', players will be teleported instantly when they
+# enter a portal. If 'false', they will have to wait a little bit. For better performance on large servers it is
+# recomended to set this to 'false'. 'true' option is usually suitable for lobbies.
+UseQuickPortals: true
