@@ -11,5 +11,6 @@ CutePortals is a portal plugin that can do some usefull stuff for your Spigot an
 This plugin was created using a perfect Java IDE <a href="https://www.jetbrains.com/idea/">IntelliJ IDEA</a>. If you wand to edit CutePortals and recompile, just use it and you'll be fine. Feel free to do it.
 
 # Links
-- <a href="https://www.spigotmc.org/resources/cuteportals.28520/">Installation and usage guides on SpigotMC</a>
+- <a href="https://www.spigotmc.org/resources/cuteportals.28520/">Guides and download links on SpigotMC</a>
+- <a href="https://dev.bukkit.org/bukkit-plugins/cuteportals">Guides and download links on Bukkit.Dev</a>
 
