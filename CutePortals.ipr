@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ArtifactManager">
     <artifact type="jar" name="unnamed">
-      <output-path>$PROJECT_DIR$/../../mcraft/Servers/mini/plugins</output-path>
+      <output-path>$PROJECT_DIR$/out</output-path>
       <root id="archive" name="unnamed.jar">
         <element id="module-output" name="CutePortals" />
       </root>
@@ -207,6 +207,9 @@
       <listeners />
       <method />
     </configuration>
+  </component>
+  <component name="VcsDirectoryMappings">
+    <mapping directory="" vcs="Git" />
   </component>
   <component name="masterDetails">
     <states>

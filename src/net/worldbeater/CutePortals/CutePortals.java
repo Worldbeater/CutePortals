@@ -31,6 +31,7 @@ public class CutePortals extends JavaPlugin {
     @Override
     public void onEnable() {
         long time = System.currentTimeMillis();
+
         if (getServer().getPluginManager().getPlugin("WorldEdit") == null) {
             getPluginLoader().disablePlugin(this);
             throw new NullPointerException(ChatColor.RED + "WorldEdit not found! Disabling...");
@@ -49,6 +50,15 @@ public class CutePortals extends JavaPlugin {
 
         loadFiles();
         loadPortalsData();
+
+        try {
+            Metrics metrics = new Metrics(this);
+            metrics.start();
+            logger.log(Level.INFO, "Metrics successfully registered!");
+        } catch (Exception e) {
+            logger.log(Level.WARNING, "Error! Metrics can not be registered!");
+        }
+
         logger.log(Level.INFO, "Version " + getDescription().getVersion() + " has been enabled. ("
                 + (System.currentTimeMillis() - time) + "ms)");
     }
