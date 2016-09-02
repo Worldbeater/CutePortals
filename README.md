@@ -1,6 +1,6 @@
 
 # About
-<a href="https://www.spigotmc.org/resources/cuteportals.28520/"><img src="https://www.spigotmc.org/attachments/start-your-logo-png.166408/" width="600" /></a><br>
+<a href="https://www.spigotmc.org/resources/cuteportals.28520/"><img src="https://dev.bukkit.org/media/images/92/93/start-your-logo.png" width="600" /></a><br>
 CutePortals is a portal plugin that can do some usefull stuff for your Spigot and BungeeCord servers. With it help you can create portals consisting of nether portal blocks that can perform various actions:
 - Transport players between servers under your BungeeCord network using portals;
 - Execute commands from console or player when a player arrives at destination server after transportation;
