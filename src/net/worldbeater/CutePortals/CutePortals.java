@@ -69,7 +69,6 @@ public class CutePortals extends JavaPlugin {
         savePortalsData();
         logger.log(Level.INFO, "Version " + getDescription().getVersion() + " has been disabled. ("
                 + (System.currentTimeMillis() - time) + "ms)");
-        TransferPlayer(null,null,null);
     }
 
     public void TransferPlayer(Player player, String server, String command) {
