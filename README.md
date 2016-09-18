@@ -8,7 +8,7 @@ CutePortals is a portal plugin that can do some usefull stuff for your Spigot an
 - Create commands that can duplicate actions above, but without using portals (this feature can be used in ChestCommands-like menu plugins, visit <a href="https://www.spigotmc.org/resources/cuteportals.28520/">project page on SpigotMC</a> for more info, guides and examples).
 
 # Compiling
-This plugin was created using a perfect Java IDE <a href="https://www.jetbrains.com/idea/">IntelliJ IDEA</a>. If you wand to edit CutePortals and recompile, just use it and you'll be fine. Feel free to do it.
+This plugin was created using a perfect Java IDE <a href="https://www.jetbrains.com/idea/">IntelliJ IDEA</a>. If you wand to edit CutePortals and recompile, just use it!
 
 # Links
 - <a href="https://www.spigotmc.org/resources/cuteportals.28520/">Project page on SpigotMC</a>
