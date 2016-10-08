@@ -1,10 +1,7 @@
 package net.worldbeater.CutePortals.Listeners;
 
-import java.util.LinkedList;
-
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.Material;
 import org.bukkit.Server;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
@@ -17,11 +14,13 @@ import org.bukkit.event.player.PlayerMoveEvent;
 import net.worldbeater.CutePortals.CutePortals;
 import org.bukkit.event.player.PlayerPortalEvent;
 
+import java.util.ArrayList;
+
 @SuppressWarnings("unused")
 public class EventListener implements Listener {
 
     private CutePortals plugin;
-    private LinkedList<String> status = new LinkedList<>();
+    private ArrayList<String> status = new ArrayList<>();
 
     public EventListener(CutePortals plugin) {
         this.plugin = plugin;
@@ -83,8 +82,6 @@ public class EventListener implements Listener {
         if (status.contains(playerName)) return;
 
         Block block = player.getWorld().getBlockAt(player.getLocation());
-        if (block.getType() != Material.PORTAL) return;
-
         if (!player.hasPermission("cuteportals.use")) {
             player.sendMessage(ChatColor.DARK_RED + "You don't have permission to use portals.");
             return;
@@ -94,12 +91,13 @@ public class EventListener implements Listener {
                 String.valueOf(block.getX()), String.valueOf(block.getY()), String.valueOf(block.getZ()));
 
         if (plugin.portalData.containsKey(data)) {
-            status.add(playerName);
             String[] args = plugin.portalData.get(data).split("#");
-            plugin.TransferPlayer(player, args[0], args[1]);
+            if (!status.contains(playerName)) {
+                status.add(playerName);
+                plugin.TransferPlayer(player, args[0], args[1]);
+                this.plugin.getServer().getScheduler().scheduleSyncDelayedTask(plugin, () -> status.remove(playerName), 40L);
+            }
         }
-
-        this.plugin.getServer().getScheduler().scheduleSyncDelayedTask(plugin, () -> status.remove(playerName), 40L);
     }
 
 }

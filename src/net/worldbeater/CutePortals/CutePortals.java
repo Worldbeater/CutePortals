@@ -10,6 +10,8 @@ import java.util.logging.Logger;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Server;
+import org.bukkit.configuration.Configuration;
+import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -25,6 +27,7 @@ public class CutePortals extends JavaPlugin {
     public Logger logger = this.getLogger();
     public Map<String, String> portalData = new HashMap<>();
     public boolean UseQuickPortals;
+    private boolean UseMetrics;
     private YamlConfiguration portalsFile;
     WorldEditPlugin worldEdit;
 
@@ -51,12 +54,16 @@ public class CutePortals extends JavaPlugin {
         loadFiles();
         loadPortalsData();
 
-        try {
-            Metrics metrics = new Metrics(this);
-            metrics.start();
-            logger.log(Level.INFO, "Metrics successfully registered!");
-        } catch (Exception e) {
-            logger.log(Level.WARNING, "Error! Metrics can not be registered!");
+        if (UseMetrics) {
+            try {
+                Metrics metrics = new Metrics(this);
+                metrics.start();
+                logger.log(Level.INFO, "Metrics successfully registered!");
+            } catch (Exception e) {
+                logger.log(Level.WARNING, "Error! Metrics can not be registered!");
+            }
+        } else {
+            logger.log(Level.INFO, "Skiping metrics enabling.");
         }
 
         logger.log(Level.INFO, "Version " + getDescription().getVersion() + " has been enabled. ("
@@ -150,6 +157,8 @@ public class CutePortals extends JavaPlugin {
     }
 
     void loadFiles() {
+
+        // Create config file if not exists
         File cFile = new File(getDataFolder(), "config.yml");
         if (!cFile.exists()) {
             if (cFile.getParentFile().mkdirs()) {
@@ -158,11 +167,20 @@ public class CutePortals extends JavaPlugin {
             }
         }
 
-        YamlConfiguration.loadConfiguration(new File(getDataFolder(), "config.yml"));
+        // Check config for right parameters existance
         this.reloadConfig();
-        UseQuickPortals = Boolean.parseBoolean(this.getConfig().getString("UseQuickPortals"));
-        logger.log(Level.INFO, "Configuration file loaded! Using quick portals: " + UseQuickPortals);
+        Configuration config = this.getConfig();
+        UseQuickPortals = Boolean.parseBoolean(config.getString("UseQuickPortals"));
+        config.set("UseQuickPortals", UseQuickPortals);
+        UseMetrics = Boolean.parseBoolean(config.getString("UseMetrics"));
+        config.set("UseMetrics", UseMetrics);
+        this.saveConfig();
 
+        logger.log(Level.INFO, "Configuration file reloaded! " +
+                "Using quick portals: " + UseQuickPortals + "; " +
+                "Using metrics: " + UseMetrics);
+
+        // Now let's check portal data.
         File pFile = new File(getDataFolder(), "portals.yml");
         if (!pFile.exists()) {
             if (pFile.getParentFile().mkdirs()) {

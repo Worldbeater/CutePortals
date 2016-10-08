@@ -1,7 +1,8 @@
-# Should the plugin perform active portal monitoring or not? If 'true', players will be teleported instantly when they
-# enter a portal. If 'false', they will have to wait a little bit. For better performance on large servers it is
-# recomended to set this to 'false'. 'true' option is usually suitable for lobbies.
+# 'true' lets you create portals from ANY block type.
+# Players will be teleported instantly when they enter a portal.
+# 'false' lets you create portals from NETHER PORTAL BLOCKS ONLY.
+# Players will have to wait a little bit before teleportation (simulating nether portal mechanics).
+# This mode is very performance-friendly, you can use it on large survival servers
 UseQuickPortals: true
-
 # Should the plugin send annonymous stats about it's usage?
 UseMetrics: true
